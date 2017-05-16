@@ -6,7 +6,7 @@ public class PlayerAccount {
 	private double totalSum;
 	
 	private Account cashAccount = new Account();
-	private ShoppingCart shoppingCart = new ShoppingCart();
+	private ShoppingCart shoppingCart ;
 
 	
 	public PlayerAccount(String name, long id) {
@@ -15,6 +15,7 @@ public class PlayerAccount {
 	}
 
 	public void selectStrategy(Strategy... strategies) {
+		shoppingCart = new ShoppingCart();
 		for (Strategy str : strategies) {
 			shoppingCart.addToCart(str);
 		}

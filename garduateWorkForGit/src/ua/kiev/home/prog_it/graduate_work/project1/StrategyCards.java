@@ -3,6 +3,15 @@ package ua.kiev.home.prog_it.graduate_work.project1;
 public class StrategyCards implements Strategy {
 
 	private double price;
+	private String strategyName;
+
+	public StrategyCards(StrategyTypes strategy) {
+		this.strategyName= strategy.name();
+	}
+	
+	public String getStrategyName() {
+		return strategyName;
+	}
 
 	@Override
 	public double getPrice() {

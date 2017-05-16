@@ -2,6 +2,11 @@ package ua.kiev.home.prog_it.graduate_work.project1;
 
 public class StrategyWinner implements Strategy {
 	private double price;
+	private String strategyName;
+
+	public StrategyWinner(StrategyTypes strategy) {
+		this.strategyName= strategy.name();
+	}
 
 	@Override
 	public double getPrice() {

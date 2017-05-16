@@ -9,6 +9,7 @@ final class ShoppingCart {
 	private double sumOfStartegies;
 	private double discountSize;
 
+	
 
 	void addToCart(Strategy strategy) {
 		str = new LinkedList<Strategy>();
