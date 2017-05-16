@@ -2,25 +2,25 @@ package ua.kiev.home.prog_it.graduate_work.project1;
 
 class Account {
 
-	private double cashAccount;
+	private double sumOnAccount;
 
 	public Account() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public Account(double sum) {
-		this.cashAccount = sum;
+		this.sumOnAccount = sum;
 	}
 
-	 double getCashAccount() {
-		return cashAccount;
+	 double getSumOnAccount() {
+		return sumOnAccount;
 	}
 
 	 void addToAccount(double sum) {
-		this.cashAccount += sum;
+		this.sumOnAccount += sum;
 	}
 
 	 void decreaseAccount(double sum) {
-		this.cashAccount -= sum;
+		this.sumOnAccount -= sum;
 	}
 }

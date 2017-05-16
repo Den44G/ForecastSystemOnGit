@@ -48,7 +48,7 @@ public class PlayerAccount {
     
     private boolean checkSum(double sum){
     	calcTotalSum(sum);
-    	if (sum<=0||sum>cashAccount.getCashAccount()||totalSum>cashAccount.getCashAccount()){
+    	if (sum<=0||sum>cashAccount.getSumOnAccount()||totalSum>cashAccount.getSumOnAccount()){
     		throw new IllegalArgumentException("Check the bet amount and balance on the account");
     	}
     	else {
