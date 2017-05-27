@@ -36,7 +36,10 @@ public class PlayerAccount {
 	}
 	
     public String placeABet(double sum){
-       checkSum(sum);
+      if( checkSum(sum)){
+    	  Bet bet = new Bet();
+    	  bet.setAccountId(cashAccount.);
+      }
 	   return "Bet is placed sucessfully";
     }
 

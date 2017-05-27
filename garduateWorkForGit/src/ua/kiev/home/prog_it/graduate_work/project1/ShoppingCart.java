@@ -8,6 +8,8 @@ final class ShoppingCart {
 	private List<Strategy> str;
 	private double sumOfStartegies;
 	private double discountSize;
+    //private String homeCommanName;
+	//private String guestCommanName;
 
 	
 
