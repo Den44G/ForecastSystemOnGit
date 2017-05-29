@@ -2,78 +2,56 @@ package ua.kiev.home.prog_it.graduate_work.project1;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 final class ShoppingCart {
 
-	private List<Strategy> str;
-	private double sumOfStartegies;
-	private double discountSize;
-    //private String homeCommanName;
-	//private String guestCommanName;
+	/*
+	 * В корзине после выбора в аккаунте пользователя - вида стратегии ,создаетя
+	 * обьект стратегии. ID матча сверяется с матчами текущего дня.
+	 * 
+	 * 
+	 * 
+	 */
 
-	
+	private String strategyName;
+	private double sumOfStartegy;
+	private Long gameId;
+	private String gameName;
+	StrategyUnit strategy;
 
-	void addToCart(Strategy strategy) {
-		str = new LinkedList<Strategy>();
-		str.add(strategy);
-	}
-
-	public double getSumOfStartegies() {
-		return sumOfStartegies;
-	}
-
-	public double getDiscountSize() {
-		return discountSize;
-	}
-
-	void deleteFromCart(Strategy strategy) {
-
-		for (Strategy s : str) {
-			if (s == strategy) {
-				str.remove(s);
+	void addToCart(Long gameId) {
+		ForecastIO fio = new ForecastIO();
+			for (Map.Entry<Long, String> entry : fio.dailyGamesImport().HMapStorage().entrySet()) {
+				if (entry.getKey() == gameId) {
+					this.gameId = entry.getKey();
+					this.gameName = entry.getValue();
+				}
 			}
-		}
+
+		
 	}
 
-	boolean checkout() {
-		if (checkStrategies()) {
-			calculateDiscount();
-			countOfStrategySum();
-			return true;
-		} else {
-			throw new IllegalArgumentException("No strategy selected!");
-		}
-
+	void addToCart(StrategyTypes type) {
+		strategy = new StrategyUnit(type);
+		this.strategyName = strategy.getStrategyName();
+		this.sumOfStartegy = strategy.getPrice();
 	}
 
-	// розрахунок знижки у випадку вибору декількох стратегій
-	private void calculateDiscount() {
-		int discount = str.size();
-		switch (discount) {
-		case 1:
-			discountSize = 10;
-			break;
-		case 2:
-			discountSize = 12;
-			break;
-		}
+	public String getStrategyName() {
+		return strategyName;
 	}
 
-	// підрахунок варти обраних стратегій
-
-	private void countOfStrategySum() {
-		for (Strategy s : str) {
-			sumOfStartegies += s.getPrice();
-		}
+	public double getSumOfStartegy() {
+		return sumOfStartegy;
 	}
 
-	// перевірка чи обрано стратегії
-	private boolean checkStrategies() {
-		if (str.isEmpty()) {
-			return false;
-		} else {
-			return true;
-		}
+	public Long getGameId() {
+		return gameId;
 	}
-	
+
+	public String getGameName() {
+		return gameName;
+	}
+
 }

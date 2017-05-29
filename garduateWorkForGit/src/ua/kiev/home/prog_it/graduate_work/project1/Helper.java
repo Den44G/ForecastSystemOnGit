@@ -4,9 +4,11 @@ public class Helper {
 
 	public static void main(String[] args) {
 
-		Strategy str = new StrategyUnit(StrategyTypes.TotalGoalScored);
+	
+		
+		StrategyUnit str = new StrategyUnit(StrategyTypes.TotalGoalScored);
 		System.out.println(str.getStrategyName());
-		Strategy str1 = new StrategyUnit(StrategyTypes.WinnerOFTheGame);
+		StrategyUnit str1 = new StrategyUnit(StrategyTypes.WinnerOFTheGame);
 		System.out.println(str1.getStrategyName());
 	}
 
