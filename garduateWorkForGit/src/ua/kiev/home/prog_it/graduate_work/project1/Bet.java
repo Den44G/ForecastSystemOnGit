@@ -52,11 +52,45 @@ class Bet {
 	}
 
 	public Bet(Builder builder) {
-		this.matchID=builder.matchID;
-		this.playerAccountId=builder.playerAccountId;
-		this.timeStamp=builder.timeStamp;
-		this.strategyName=builder.strategyName;
-		this.sumOfBet=builder.sumOfBet;
-		this.betPlayed=builder.betPlayed;
+		this.matchID = builder.matchID;
+		this.playerAccountId = builder.playerAccountId;
+		this.timeStamp = builder.timeStamp;
+		this.strategyName = builder.strategyName;
+		this.sumOfBet = builder.sumOfBet;
+		this.betPlayed = builder.betPlayed;
+	}
+
+	public void setBetPlayed(boolean betPlayed) {
+		this.betPlayed = betPlayed;
+	}
+
+	public LocalDateTime getTimeStamp() {
+		return timeStamp;
+	}
+
+	public String getStrategyName() {
+		return strategyName;
+	}
+
+	public double getSumOfBet() {
+		return sumOfBet;
+	}
+
+	public long getPlayerAccountId() {
+		return playerAccountId;
+	}
+
+	public boolean isBetPlayed() {
+		return betPlayed;
+	}
+
+	public long getMatchID() {
+		return matchID;
+	}
+
+	@Override
+	public String toString() {
+		return "Bet [timeStamp=" + timeStamp + ", strategyName=" + strategyName + ", sumOfBet=" + sumOfBet
+				+ ", playerAccountId=" + playerAccountId + ", betPlayed=" + betPlayed + ", matchID=" + matchID + "]";
 	}
 }

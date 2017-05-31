@@ -19,10 +19,11 @@ final class ShoppingCart {
 	private Long gameId;
 	private String gameName;
 	StrategyUnit strategy;
-
-	void addToCart(Long gameId) {
-		ForecastIO fio = new ForecastIO();
-			for (Map.Entry<Long, String> entry : fio.dailyGamesImport().HMapStorage().entrySet()) {
+	ForecastIO fio = ForecastIO.getInstance();
+	
+	
+	void checkTheGame(Long gameId) {
+			for (Map.Entry<Long, String> entry : fio.getDailyGames().HMapStorage().entrySet()) {
 				if (entry.getKey() == gameId) {
 					this.gameId = entry.getKey();
 					this.gameName = entry.getValue();
@@ -32,7 +33,7 @@ final class ShoppingCart {
 		
 	}
 
-	void addToCart(StrategyTypes type) {
+	void addToCart(StrategyTypes type,Long gameId) {
 		strategy = new StrategyUnit(type);
 		this.strategyName = strategy.getStrategyName();
 		this.sumOfStartegy = strategy.getPrice();

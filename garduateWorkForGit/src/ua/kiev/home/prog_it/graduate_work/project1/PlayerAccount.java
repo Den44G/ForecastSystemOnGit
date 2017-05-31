@@ -10,7 +10,6 @@ public class PlayerAccount {
 	private Account cashAccount = new Account();
 	private ShoppingCart shoppingCart;
 	private Bet bet;
-	private ForecastStorage<Bet> betStorage;
 	private ForecastDataSelection dataSelection;
 
 	public PlayerAccount(String name, long id) {
@@ -20,8 +19,7 @@ public class PlayerAccount {
 
 	public void wantToPlay(StrategyTypes type, long gameId) {
 		shoppingCart = new ShoppingCart();
-		shoppingCart.addToCart(type);
-		shoppingCart.addToCart(gameId);
+		shoppingCart.addToCart(type,gameId);
 	}
 
 	public void noWantToPlay() {
@@ -38,11 +36,11 @@ public class PlayerAccount {
 	}
 
 	public void placeABet(double sum) {
-		betStorage = new ForecastStorage<>();
+	BetsStrorage betStorage = BetsStrorage.getInstance();
 		if (checkSum(sum)) {
 			bet = new Bet.Builder(shoppingCart.getGameId(), id).timeStamp(LocalDateTime.now())
 					.strategyname(shoppingCart.getStrategyName()).sumOfBet(totalSum).betPlayed(false).build();
-			betStorage.treeStorageAdd(bet);
+			betStorage.addBet(bet);
 			betCounter++;
 		} else {
 			throw new IllegalArgumentException("Check the bet amount and balance on the account");
